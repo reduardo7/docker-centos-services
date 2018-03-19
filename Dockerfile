@@ -20,11 +20,6 @@ RUN systemctl enable iptables.service
 ##############
 
 RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
-
-COPY ansible/ssh/deployer/id_rsa.pub /tmp/setup.authorized_keys
-COPY scripts/server-user-setup.sh /tmp/server-user-setup.sh
-RUN chmod a+x /tmp/server-user-setup.sh
-RUN /tmp/server-user-setup.sh deployer sysadmin "$(cat /tmp/setup.authorized_keys)"
 RUN systemctl enable sshd.service
 
 ###########
@@ -32,9 +27,6 @@ RUN systemctl enable sshd.service
 ###########
 
 RUN yum clean all
-RUN rm -f \
-    /tmp/server-user-setup.sh \
-    /tmp/setup.authorized_keys
 
 #######
 # Run #

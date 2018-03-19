@@ -14,6 +14,4 @@ services:
       - seccomp:unconfined
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ./docker/docker-fixes.service:/usr/lib/systemd/system/docker-fixes.service:ro
-      - ./docker/docker-fixes.sh:/etc/docker-fixes.sh:ro
 

@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  centos:
+    build:
+      context: ./
+    image: reduardo7/centos
+    dns: 8.8.8.8
+    cap_add:
+      - SYS_ADMIN
+      - NET_ADMIN
+      - NET_RAW
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./docker/docker-fixes.service:/usr/lib/systemd/system/docker-fixes.service:ro
+      - ./docker/docker-fixes.sh:/etc/docker-fixes.sh:ro
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=Docker Container Fixes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/docker-fixes.sh
+ExecReload=/etc/docker-fixes.sh
+ExecStop=/etc/docker-fixes.sh
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=basic.target
